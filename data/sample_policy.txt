@@ -1,0 +1,6 @@
+Policy Rules:
+
+1. All decisions must be approved by a manager.
+2. Confidential information must not be shared externally.
+3. Security review cannot be skipped.
+4. Deadlines cannot be changed without approval.
