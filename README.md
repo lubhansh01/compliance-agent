@@ -43,4 +43,12 @@ streamlit run streamlit_app.py
 3. In the app's Settings → Secrets, add a secret named `GOOGLE_API_KEY` with your Gemini API key.
 4. Set the app's main file to `streamlit_app.py` and deploy. The app reads the key from `st.secrets` or the environment.
 
+Optional: If you get a 'model not found' error, set a `MODEL_NAME` secret in Streamlit Cloud to a model your key can access. Example values:
+
+- `gemini-1.5-flash` (recommended; currently default)
+- `gemini-2.0-flash` (if available in your region)
+- `gemini-1.5-pro` (larger, more capable model)
+
+Add `MODEL_NAME` in the app's Settings → Secrets as needed.
+
 Note: For security, do NOT commit the real API key into the repository. Use Streamlit Cloud Secrets or environment variables.

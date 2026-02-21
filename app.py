@@ -14,7 +14,8 @@ else:
     # Allow Gradio app to start but surface a helpful error if used without a key
     genai.configure(api_key=None)
 
-model = genai.GenerativeModel("gemini-pro")
+MODEL_NAME = os.getenv("MODEL_NAME") or "gemini-2.5-flash"
+model = genai.GenerativeModel(MODEL_NAME)
 
 def analyze(policy_file, comm_file):
     # support text or PDF policy files
@@ -37,10 +38,15 @@ def analyze(policy_file, comm_file):
         prompt = build_analysis_prompt(policy_text, message)
         try:
             response = model.generate_content(prompt).text
+            parsed = parse_gemini_output(response)
         except Exception as e:
-            response = str(e)
-
-        parsed = parse_gemini_output(response)
+            # Surface API errors clearly in results so UI shows the root cause (e.g. 404 model not found)
+            parsed = {
+                "violation_type": "API Error",
+                "severity": "N/A",
+                "confidence": "0%",
+                "explanation": str(e)
+            }
 
         results.append([
             message,
