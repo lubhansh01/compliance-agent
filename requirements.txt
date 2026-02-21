@@ -1,0 +1,5 @@
+streamlit
+gradio
+pandas
+google-generativeai
+PyPDF2
