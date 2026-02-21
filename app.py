@@ -5,7 +5,7 @@ import google.generativeai as genai
 from utils.prompts import build_analysis_prompt
 from utils.parser import parse_gemini_output
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+genai.configure(api_key=os.getenv(AIzaSyDLGFgfi46daUSK479rSLMk01ymj6D6_lI))
 model = genai.GenerativeModel("gemini-pro")
 
 def analyze(policy_file, comm_file):
